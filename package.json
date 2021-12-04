@@ -1,0 +1,25 @@
+{
+  "name": "add-text-to-line-array",
+  "version": "1.0.1",
+  "description": "add text to line array",
+  "main": "add-text-to-line-array.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "add",
+    "text",
+    "line",
+    "array"
+  ],
+  "author": "fwg",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adf0001/add-text-to-line-array.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adf0001/add-text-to-line-array/issues"
+  },
+  "homepage": "https://github.com/adf0001/add-text-to-line-array#readme"
+}
