@@ -33,7 +33,7 @@ var addText = function (lineArray, text, linePrefix, maxLineNumber) {
 }
 
 var addLine = function (lineArray, textArray, linePrefix, maxLineNumber) {
-	if (!(  textArray instanceof Array)) textArray = [textArray];
+	if (!(textArray instanceof Array)) textArray = [textArray];
 	linePrefix = linePrefix || "";
 
 	for (var i = 0; i < textArray.length; i++) {
@@ -45,5 +45,5 @@ var addLine = function (lineArray, textArray, linePrefix, maxLineNumber) {
 
 module.exports = exports = addText;
 
-exports.addText=addText;
-exports.addLine=addLine;
+exports.addText = addText;
+exports.addLine = addLine;
