@@ -3,8 +3,8 @@
 
 var DEAULT_MAX_LINE_NUMBER = 255;
 
-//module.exports = function (lineArray, text [, linePrefix [, maxLineNumber]] )
-module.exports = function (lineArray, text, linePrefix, maxLineNumber) {
+//var addText = function (lineArray, text [, linePrefix [, maxLineNumber]] )
+var addText = function (lineArray, text, linePrefix, maxLineNumber) {
 	var sa = text.split(/\r\n|\n\r|\n|\r/);
 	if (lineArray.length < 1) lineArray[0] = "";
 
@@ -29,5 +29,21 @@ module.exports = function (lineArray, text, linePrefix, maxLineNumber) {
 	//keep max line number
 	maxLineNumber = maxLineNumber || DEAULT_MAX_LINE_NUMBER;
 
-	while (lineArray.length > maxLineNumber) { lineArray.shift(); }
+	if (lineArray.length > maxLineNumber) lineArray.splice(0, lineArray.length - maxLineNumber);
 }
+
+var addLine = function (lineArray, textArray, linePrefix, maxLineNumber) {
+	if (!(  textArray instanceof Array)) textArray = [textArray];
+	linePrefix = linePrefix || "";
+
+	for (var i = 0; i < textArray.length; i++) {
+		lineArray[lineArray.length] = linePrefix + textArray[i];
+	}
+
+	if (lineArray.length > maxLineNumber) lineArray.splice(0, lineArray.length - maxLineNumber);
+}
+
+module.exports = exports = addText;
+
+exports.addText=addText;
+exports.addLine=addLine;
