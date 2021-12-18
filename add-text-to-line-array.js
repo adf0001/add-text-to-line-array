@@ -4,21 +4,29 @@
 var DEAULT_MAX_LINE_NUMBER = 255;
 
 //var addText = function (lineArray, text [, linePrefix [, maxLineNumber]] )
+//NOTE: a property ".lastLinePrefix" will save into `lineArray`, if `linePrefix` is not empty.
 var addText = function (lineArray, text, linePrefix, maxLineNumber) {
-	var sa = text.split(/\r\n|\n\r|\n|\r/);
-	if (lineArray.length < 1) lineArray[0] = "";
-
-	//for last line in lineArray
+	//line prefix
 	linePrefix = linePrefix || "";
+
+	//init line-array by linePrefix
+	if (lineArray.length < 1) {
+		lineArray[0] = linePrefix;
+		if (linePrefix) lineArray.lastLinePrefix = linePrefix;
+	}
+
 	var lastLinePrefix = lineArray.lastLinePrefix || "";
 
+	var sa = text.split(/\r\n|\n\r|\n|\r/);
+
+	//for last line in lineArray and the 1st line of the text
 	if (linePrefix == lastLinePrefix) {
 		lineArray[lineArray.length - 1] = lineArray[lineArray.length - 1] + sa[0];
 	}
 	else {
-		lineArray[lineArray.length] = linePrefix + sa[0];
+		lineArray[lineArray.length] = linePrefix + sa[0];	//new line
 		//save lastLinePrefix to lineArray
-		lineArray.lastLinePrefix = linePrefix;
+		lineArray.lastLinePrefix = linePrefix;		//always save, in all conditions.
 	}
 
 	//add the rest
@@ -39,6 +47,9 @@ var addLine = function (lineArray, textArray, linePrefix, maxLineNumber) {
 	for (var i = 0; i < textArray.length; i++) {
 		lineArray[lineArray.length] = linePrefix + textArray[i];
 	}
+
+	//set .lastLinePrefix
+	if (linePrefix || lineArray.lastLinePrefix) lineArray.lastLinePrefix = linePrefix;
 
 	if (lineArray.length > maxLineNumber) lineArray.splice(0, lineArray.length - maxLineNumber);
 }

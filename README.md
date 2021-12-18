@@ -27,7 +27,9 @@ add_text_to_line_array(buf, "k2");
 //.addLine(lineArray, textArray [, linePrefix [, maxLineNumber = 255]] )
 add_text_to_line_array.addLine(buf, ["k3", "k4"]);
 add_text_to_line_array(buf, "k5");
-add_text_to_line_array.addLine(buf, "k6");
+add_text_to_line_array.addLine(buf, ["k6",""]);
+add_text_to_line_array(buf, "k7");
+add_text_to_line_array.addLine(buf, "k8");
 
 console.log(buf.join("\n"));
 
@@ -46,6 +48,8 @@ buf.join("\n") === [
 	"k3",
 	"k4k5",
 	"k6",
+	"k7",
+	"k8",
 ].join("\n")
 */
 
